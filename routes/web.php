@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PublicProfileController;
 use Illuminate\Support\Facades\Route;
 
 // public routes
 Route::get('/', function () {
     return view('home');
 })->name('home');
+Route::get('/@{user:username}', [PublicProfileController::class, 'show'])->name('profile');
 
 // authentication routes (for guests)
 Route::middleware('guest')->group(function () {

@@ -25,7 +25,7 @@
             <div class="my-1 border-t border-zinc-200 dark:border-zinc-700"></div>
             <div class="py-1">
 
-                <a href="#"
+                <a href="{{ route('profile', ['user' => auth()->user()]) }}"
                    class="flex items-center gap-2 px-4 py-2 text-sm text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700">
                     <i class="fas fa-user"></i>
                     Profile
