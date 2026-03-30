@@ -46,6 +46,15 @@
 
                     <div>
                         <label class="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                            Username
+                        </label>
+                        <input type="text" name="username" value="{{ old('username') }}" required
+                               class="w-full rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100 focus:ring-2 focus:ring-primary-500 focus:outline-none {{ $errors->has('username') ? 'ring-2 ring-red-500' : '' }}"
+                               placeholder="john.doe">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">
                             Email Address
                         </label>
                         <input type="email" name="email" value="{{ old('email') }}" required

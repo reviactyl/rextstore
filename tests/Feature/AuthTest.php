@@ -17,8 +17,10 @@ it('shows the register page', function () {
 });
 
 it('registers a new user and logs them in', function () {
-    $response = $this->post(route('register'), [
+    $response = $this->withSession(['_token' => 'test-token'])->post(route('register'), [
+        '_token' => 'test-token',
         'name' => 'Test User',
+        'username' => 'testuser',
         'email' => 'test@example.com',
         'password' => 'Password123!',
         'password_confirmation' => 'Password123!',
@@ -39,7 +41,8 @@ it('logs in an existing user with valid credentials', function () {
         'password' => Hash::make('Password123!'),
     ]);
 
-    $response = $this->post(route('login'), [
+    $response = $this->withSession(['_token' => 'test-token'])->post(route('login'), [
+        '_token' => 'test-token',
         'email' => $user->email,
         'password' => 'Password123!',
     ]);
@@ -53,7 +56,8 @@ it('rejects invalid login credentials', function () {
         'password' => Hash::make('Password123!'),
     ]);
 
-    $response = $this->from(route('login'))->post(route('login'), [
+    $response = $this->from(route('login'))->withSession(['_token' => 'test-token'])->post(route('login'), [
+        '_token' => 'test-token',
         'email' => $user->email,
         'password' => 'wrong-password',
     ]);
@@ -64,14 +68,18 @@ it('rejects invalid login credentials', function () {
 });
 
 it('does not allow guests to call logout', function () {
-    $this->post(route('logout'))
+    $this->withSession(['_token' => 'test-token'])->post(route('logout'), [
+        '_token' => 'test-token',
+    ])
         ->assertRedirect(route('login'));
 });
 
 it('logs out an authenticated user', function () {
     $user = User::factory()->create();
 
-    $response = $this->actingAs($user)->post(route('logout'));
+    $response = $this->actingAs($user)->withSession(['_token' => 'test-token'])->post(route('logout'), [
+        '_token' => 'test-token',
+    ]);
 
     $response->assertRedirect(route('home'));
     $this->assertGuest();
