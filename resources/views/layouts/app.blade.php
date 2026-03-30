@@ -6,11 +6,10 @@
 
         <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
 
-        <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-        <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
             @vite(['resources/css/app.css', 'resources/js/app.ts'])
         @else
@@ -20,6 +19,8 @@
         @endif
     </head>
     <body class="min-h-screen bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-300">
+        @include('partials.navbar')
+
         @yield('content')
     </body>
 
