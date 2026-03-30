@@ -8,7 +8,7 @@
     <button 
         type="button" 
         @click="open = !open"
-        class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white rounded-lg transition-colors"
+        class="flex bg-transparent border-0 text-left w-full items-center gap-1.5 px-3 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white rounded-lg transition-colors"
     >
     @if($icon)
         <x-dynamic-component :component="$icon"  />
