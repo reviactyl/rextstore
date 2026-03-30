@@ -36,6 +36,25 @@ it('registers a new user and logs them in', function () {
     $this->assertAuthenticatedAs($user);
 });
 
+it('does not allow setting root_admin during registration', function () {
+    $response = $this->withSession(['_token' => 'test-token'])->post(route('register'), [
+        '_token' => 'test-token',
+        'name' => 'Priv Esc Tester',
+        'username' => 'privesc',
+        'email' => 'privesc@example.com',
+        'password' => 'Password123!',
+        'password_confirmation' => 'Password123!',
+        'root_admin' => true,
+    ]);
+
+    $response->assertRedirect(route('home'));
+
+    $user = User::where('email', 'privesc@example.com')->first();
+
+    expect($user)->not->toBeNull();
+    expect($user->root_admin)->toBeFalse();
+});
+
 it('logs in an existing user with valid credentials', function () {
     $user = User::factory()->create([
         'password' => Hash::make('Password123!'),
