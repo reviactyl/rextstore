@@ -24,7 +24,7 @@ it('registers a new user and logs them in', function () {
         'password_confirmation' => 'Password123!',
     ]);
 
-    $response->assertRedirect(route('welcome'));
+    $response->assertRedirect(route('home'));
 
     $user = User::where('email', 'test@example.com')->first();
 
@@ -44,7 +44,7 @@ it('logs in an existing user with valid credentials', function () {
         'password' => 'Password123!',
     ]);
 
-    $response->assertRedirect(route('welcome'));
+    $response->assertRedirect(route('home'));
     $this->assertAuthenticatedAs($user);
 });
 
@@ -73,6 +73,6 @@ it('logs out an authenticated user', function () {
 
     $response = $this->actingAs($user)->post(route('logout'));
 
-    $response->assertRedirect(route('welcome'));
+    $response->assertRedirect(route('home'));
     $this->assertGuest();
 });

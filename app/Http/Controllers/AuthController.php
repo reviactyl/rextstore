@@ -37,7 +37,7 @@ class AuthController extends Controller
             // regenerate session
             $request->session()->regenerate();
 
-            return redirect()->intended(route('welcome'))->with('success', 'Logged in successfully!');
+            return redirect()->intended(route('home'))->with('success', 'Logged in successfully!');
         }
 
         // return to login with error
@@ -82,7 +82,7 @@ class AuthController extends Controller
         // auto-login the user after registration
         Auth::login($user);
 
-        return redirect(route('welcome'))->with('success', 'Account created successfully!');
+        return redirect(route('home'))->with('success', 'Account created successfully!');
     }
 
     /**
@@ -95,6 +95,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect(route('welcome'))->with('success', 'Logged out successfully!');
+        return redirect(route('home'))->with('success', 'Logged out successfully!');
     }
 }

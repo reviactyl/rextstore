@@ -1,8 +1,8 @@
 <x-nav-item
-    :route="route('welcome')"
+    :route="route('home')"
     icon="tabler-home-f"
     label="Home"
-    :active="Route::currentRouteName() === 'welcome'" />
+    :active="Route::currentRouteName() === 'home'" />
 
 <x-nav-dropdown icon="tabler-packages" label="Products">
 

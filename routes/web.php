@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 // public routes
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+    return view('home');
+})->name('home');
 
 // authentication routes (for guests)
 Route::middleware('guest')->group(function () {
