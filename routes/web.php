@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EggController;
 use App\Http\Controllers\PublicProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -8,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 })->name('home');
+Route::get('/eggs', [EggController::class, 'overview'])->name('eggs.index');
+Route::get('/eggs/{nest}/{egg}', [EggController::class, 'show'])->name('eggs.show');
+Route::get('/eggs/{nest}/{egg}/download', [EggController::class, 'download'])->name('eggs.download');
 Route::get('/@{user:username}', [PublicProfileController::class, 'show'])->name('profile');
 
 // authentication routes (for guests)

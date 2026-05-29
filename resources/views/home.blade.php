@@ -50,7 +50,7 @@
     </div>
 
     <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <a href="#" class="flex items-center rounded-lg border border-zinc-200 bg-white px-4 py-2 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700">
+      <a href="{{ route('eggs.index') }}" class="flex items-center rounded-lg border border-zinc-200 bg-white px-4 py-2 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700">
         <x-tabler-eggs class="me-2 h-4 w-4 shrink-0 text-zinc-900 dark:text-white" />
         <span class="ml-2 text-sm font-medium text-zinc-900 dark:text-white">Panel Eggs</span>
       </a>
